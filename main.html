@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Строчные vs Блочные теги — наглядно (by albert :#{)</title>
+  <style>
+    body { 
+      font-family: sans-serif; 
+      margin: 0; 
+      background: #0f172a; 
+      color: #e5e7eb; 
+    }
+
+    .control-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #0b1220;
+      border-bottom: 1px solid #1f2a44;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn { 
+      cursor: pointer; 
+      background: #111827; 
+      border: 1px solid #334155; 
+      border-radius: 6px; 
+      padding: 6px 12px; 
+      color: #cbd5e1; 
+    }
+
+    .wrapper { 
+      margin: 20px auto; 
+      padding: 20px; 
+      border: 1px solid #334155; 
+      border-radius: 12px; 
+      background: #111827; 
+      transition: width 0.3s ease;
+    }
+
+    h1 { font-size: 26px; margin: 0 0 8px 0; }
+    h2 { font-size: 20px; margin-top: 0; }
+
+    .muted { font-size: 14px; color: #94a3b8; }
+
+    .card { 
+      background: #1e293b; 
+      border-radius: 12px; 
+      margin-bottom: 20px; 
+      padding: 16px; 
+      border: 1px solid #334155;
+    }
+
+    .demo-surface { 
+      border: 2px dashed #334155; 
+      padding: 12px; 
+      border-radius: 8px; 
+      background: rgba(148,163,184,.06); 
+      margin-top: 10px;
+    }
+
+    .inline { 
+      display: inline; 
+      border: 2px solid #22c55e; 
+      background: rgba(34,197,94,.1); 
+      padding: 4px; 
+      border-radius: 4px; 
+      margin-right: 6px;
+    }
+
+    .block { 
+      display: block; 
+      border: 2px solid #60a5fa; 
+      background: rgba(96,165,250,.1); 
+      padding: 6px; 
+      border-radius: 4px; 
+      margin: 8px 0; 
+    }
+
+    .explanation { 
+      margin-top: 20px; 
+      font-size: 15px; 
+      line-height: 1.6; 
+      color: #d1d5db;
+    }
+  </style>
+</head>
+<body>
+  <div class="control-bar">
+    <label for="width-slider" id="slider-label">Ширина контейнера:</label>
+    <input type="range" id="width-slider" min="400" max="1200" value="900" step="50">
+    <span id="width-value">900px</span>
+    <button id="lang-toggle" class="btn">English</button>
+  </div>
+
+  <div class="wrapper" id="container" style="width:900px">
+    <h1 id="heading">
+      Строчные (inline) и блочные (block) элементы в HTML <small class="muted">by albert :#{</small>
+    </h1>
+    <p id="lead">Ниже — две зоны с живой демонстрацией. 
+      <strong>Зелёные рамки</strong> — строчные элементы, 
+      <strong>синие рамки</strong> — блочные.
+    </p>
+
+    <section class="card">
+      <h2 id="inline-title">Строчные теги</h2>
+      <div class="demo-surface">
+        Это обычный текст, и внутри него есть 
+        <span class="inline">&lt;span&gt;</span> 
+        <a class="inline" href="#">&lt;a&gt;</a> 
+        <strong class="inline">&lt;strong&gt;</strong> 
+        <img class="inline" src="https://twemoji.maxcdn.com/v/14.0.2/72x72/1f436.png" alt="dog" width="20"> 
+        <img class="inline" src="https://twemoji.maxcdn.com/v/14.0.2/72x72/1f431.png" alt="cat" width="20">
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 id="block-title">Блочные теги</h2>
+      <div class="demo-surface">
+        <div class="block">&lt;div&gt; — блочный контейнер</div>
+        <p class="block">&lt;p&gt; — абзац текста</p>
+        <h3 class="block">&lt;h3&gt; — заголовок</h3>
+        <ul class="block">
+          <li>&lt;ul&gt; — список</li>
+          <li>&lt;li&gt; — элемент списка</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="explanation" id="explanation-text">
+      В HTML все элементы делятся на <strong>строчные</strong> (inline) и <strong>блочные</strong> (block).  
+      <br><br>
+      🔹 <strong>Строчные</strong> живут внутри строки текста, не разрывают поток и располагаются друг за другом.  
+      <br>
+      🔹 <strong>Блочные</strong> занимают всю ширину контейнера, всегда начинаются с новой строки.  
+      <br><br>
+      В этом примере можно менять ширину контейнера с помощью ползунка сверху и наблюдать, как по-разному ведут себя строчные и блочные элементы.
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      ru: {
+        title: "Строчные vs Блочные теги — наглядно (by albert :#{)",
+        heading: "Строчные (inline) и блочные (block) элементы в HTML <small class='muted'>by albert :#{</small>",
+        lead: "Ниже — две зоны с живой демонстрацией. <strong>Зелёные рамки</strong> — строчные элементы, <strong>синие рамки</strong> — блочные.",
+        inlineTitle: "Строчные теги",
+        blockTitle: "Блочные теги",
+        explanation: "В HTML все элементы делятся на <strong>строчные</strong> (inline) и <strong>блочные</strong> (block).<br><br>🔹 <strong>Строчные</strong> живут внутри строки текста, не разрывают поток и располагаются друг за другом.<br>🔹 <strong>Блочные</strong> занимают всю ширину контейнера, всегда начинаются с новой строки.<br><br>В этом примере можно менять ширину контейнера с помощью ползунка сверху и наблюдать, как по-разному ведут себя строчные и блочные элементы.",
+        langBtn: "English",
+        sliderLabel: "Ширина контейнера:"
+      },
+      en: {
+        title: "Inline vs Block elements — demo (by albert :#{)",
+        heading: "Inline (inline) and Block (block) elements in HTML <small class='muted'>by albert :#{</small>",
+        lead: "Below are two demo zones. <strong>Green borders</strong> — inline elements, <strong>blue borders</strong> — block elements.",
+        inlineTitle: "Inline tags",
+        blockTitle: "Block tags",
+        explanation: "In HTML, all elements are divided into <strong>inline</strong> and <strong>block</strong>.<br><br>🔹 <strong>Inline</strong> elements live inside a line of text, do not break the flow, and sit side by side.<br>🔹 <strong>Block</strong> elements take the full width of the container and always start on a new line.<br><br>In this example, you can adjust the container width using the slider above and see how inline and block elements behave differently.",
+        langBtn: "Русский",
+        sliderLabel: "Container width:"
+      }
+    };
+
+    let currentLang = 'ru';
+
+    document.getElementById('lang-toggle').addEventListener('click', () => {
+      currentLang = currentLang === 'ru' ? 'en' : 'ru';
+      setLang(currentLang);
+    });
+
+    function setLang(lang) {
+      document.title = translations[lang].title;
+      document.getElementById('page-title').innerText = translations[lang].title;
+      document.getElementById('heading').innerHTML = translations[lang].heading;
+      document.getElementById('lead').innerHTML = translations[lang].lead;
+      document.getElementById('inline-title').innerText = translations[lang].inlineTitle;
+      document.getElementById('block-title').innerText = translations[lang].blockTitle;
+      document.getElementById('explanation-text').innerHTML = translations[lang].explanation;
+      document.getElementById('lang-toggle').innerText = translations[lang].langBtn;
+      document.getElementById('slider-label').innerText = translations[lang].sliderLabel;
+    }
+
+    const slider = document.getElementById('width-slider');
+    const container = document.getElementById('container');
+    const widthValue = document.getElementById('width-value');
+
+    slider.addEventListener('input', () => {
+      container.style.width = slider.value + 'px';
+      widthValue.innerText = slider.value + 'px';
+    });
+  </script>
+</body>
+</html>
